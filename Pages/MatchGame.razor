@@ -16,7 +16,13 @@
     <button id="endButton" @onclick="EndGame">END</button>
     <button id="restartButton" @onclick="RestartGame">RESTART</button>
 </div>
-
+<div id="hidden" style="margin: 400px 50px 20px 0;display: grid;grid-template-columns: repeat(7, 1fr);grid-template-rows: repeat(11, 1fr);">
+    @for(int i = 0; i < 73; i++) {
+        <div style="height:128px;width:128px;display:block;">
+            <TileComponent Id="999" Image="@allImages[i]" IsRevealed="true" IsMatched="false" />
+        </div>
+    }
+</div>
 @code {
     private List<Tile> Tiles = new List<Tile>();
     private string CurrentBibleVerse = "";

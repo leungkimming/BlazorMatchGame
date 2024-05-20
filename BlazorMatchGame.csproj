@@ -214,91 +214,91 @@
     <Content Update="wwwroot\images\tile47.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\images\Tile48.png">
+    <Content Update="wwwroot\images\tile48.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\images\Tile49.png">
+    <Content Update="wwwroot\images\tile49.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="wwwroot\images\tile5.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\images\Tile50.png">
+    <Content Update="wwwroot\images\tile50.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\images\Tile51.png">
+    <Content Update="wwwroot\images\tile51.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\images\Tile52.png">
+    <Content Update="wwwroot\images\tile52.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\images\Tile53.png">
+    <Content Update="wwwroot\images\tile53.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\images\Tile54.png">
+    <Content Update="wwwroot\images\tile54.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\images\Tile55.png">
+    <Content Update="wwwroot\images\tile55.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\images\Tile56.png">
+    <Content Update="wwwroot\images\tile56.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\images\Tile57.png">
+    <Content Update="wwwroot\images\tile57.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\images\Tile58.png">
+    <Content Update="wwwroot\images\tile58.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\images\Tile59.png">
+    <Content Update="wwwroot\images\tile59.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="wwwroot\images\tile6.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\images\Tile60.png">
+    <Content Update="wwwroot\images\tile60.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\images\Tile61.png">
+    <Content Update="wwwroot\images\tile61.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\images\Tile62.png">
+    <Content Update="wwwroot\images\tile62.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\images\Tile63.png">
+    <Content Update="wwwroot\images\tile63.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\images\Tile64.png">
+    <Content Update="wwwroot\images\tile64.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\images\Tile65.png">
+    <Content Update="wwwroot\images\tile65.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\images\Tile66.png">
+    <Content Update="wwwroot\images\tile66.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\images\Tile67.png">
+    <Content Update="wwwroot\images\tile67.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\images\Tile68.png">
+    <Content Update="wwwroot\images\tile68.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\images\Tile69.png">
+    <Content Update="wwwroot\images\tile69.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="wwwroot\images\tile7.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\images\Tile70.png">
+    <Content Update="wwwroot\images\tile70.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\images\Tile71.png">
+    <Content Update="wwwroot\images\tile71.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\images\Tile72.png">
+    <Content Update="wwwroot\images\tile72.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\images\Tile73.png">
+    <Content Update="wwwroot\images\tile73.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="wwwroot\images\tile8.png">
@@ -307,10 +307,6 @@
     <Content Update="wwwroot\images\tile9.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Components\" />
   </ItemGroup>
 
 </Project>
