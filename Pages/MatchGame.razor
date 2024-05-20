@@ -1,0 +1,147 @@
+@page "/"
+@inject BibleService BibleService
+@inject IJSRuntime JSRuntime
+
+<div id="container">
+    <div id="bible" style="font-size: @fontSizePx; font-weight: bold;">
+            <p>@CurrentBibleVerse</p>
+    </div>
+    <div id="memory">
+        @foreach (var tile in Tiles) {
+            <TileComponent Id="@tile.Id" Image="@tile.Image" IsRevealed="@tile.IsRevealed" IsMatched="@tile.IsMatched" OnClick="HandleTileClick" />
+        }
+    </div>
+</div>
+<div id="banner">
+    <button id="endButton" @onclick="EndGame">END</button>
+    <button id="restartButton" @onclick="RestartGame">RESTART</button>
+</div>
+
+@code {
+    private List<Tile> Tiles = new List<Tile>();
+    private string CurrentBibleVerse = "";
+    private string fontSizePx = "16px"; // Default font size
+    private Tile firstRevealedTile;
+    private string[] allImages = new string[73];
+    // private string[] allImages = {
+    //     "images/tile1.png", "images/tile2.png", /* etc, up to tile47.png */
+    // };
+    private List<string> selectedImages = new List<string>();
+    private List<string> bibleVerses = new List<string>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await InitializeGame();
+    }
+
+    private async Task InitializeGame()
+    {
+        // Load and randomize Bible verses
+        var verses = await BibleService.GetBibleVersesAsync();
+        bibleVerses = verses.ToList();
+        if (bibleVerses.Count > 0) {
+            var random = new Random();
+            CurrentBibleVerse = bibleVerses[random.Next(bibleVerses.Count)];
+            CalculateFontSize();
+        }
+
+        // Reset tiles
+        Tiles.Clear();
+        for (int i = 0; i < allImages.Length; i++)
+        {
+            allImages[i] = $"images/tile{i + 1}.png";
+        }
+        selectedImages = allImages.OrderBy(x => Guid.NewGuid()).Take(12).ToList();
+        selectedImages.AddRange(selectedImages); // Duplicate to make pairs
+        selectedImages = selectedImages.OrderBy(x => Guid.NewGuid()).ToList();
+
+        for (int i = 0; i < 24; i++)
+        {
+            Tiles.Add(new Tile { Id = i, Image = selectedImages[i] });
+        }
+
+        firstRevealedTile = null;
+        StateHasChanged();
+    }
+
+    private async Task HandleTileClick(int tileId) {
+        var tile = Tiles.First(t => t.Id == tileId);
+        if (firstRevealedTile == null) {
+            tile.IsRevealed = true;
+            firstRevealedTile = tile;
+        } else {
+            if (firstRevealedTile.Image == tile.Image) {
+                // Match found
+                tile.IsRevealed = true;
+                await Task.Delay(500);
+                tile.IsMatched = true;
+                firstRevealedTile.IsMatched = true;
+                firstRevealedTile = null;
+
+                if (Tiles.All(t => t.IsMatched)) {
+                    ShowFullBibleVerse();
+                }
+            } else {
+                // No match, cover both tiles after delay
+                tile.IsRevealed = true;
+                StateHasChanged();
+                await Task.Delay(1000);
+                tile.IsRevealed = false;
+                firstRevealedTile.IsRevealed = false;
+                firstRevealedTile = null;
+            }
+        }
+        StateHasChanged();
+    }
+
+    private void ShowFullBibleVerse() {
+        foreach (var tile in Tiles) {
+            tile.IsMatched = true;
+        }
+        StateHasChanged();
+    }
+
+    private void EndGame() {
+        ShowFullBibleVerse();
+    }
+
+    private async Task RestartGame() {
+        await InitializeGame();
+    }
+
+    private class Tile {
+        public int Id { get; set; }
+        public string Image { get; set; }
+        public bool IsRevealed { get; set; }
+        public bool IsMatched { get; set; }
+    }
+
+    private async void CalculateFontSize() {
+        double areaWidth = 900;
+        double areaHeight = 570;
+        int fontSize = 34;
+        bool fits = false;
+        double t_textHeight = 0;
+        //CurrentBibleVerse = "主阿、誰敢不敬畏你、不將榮耀歸與你的名呢．因為獨有你是聖的．萬民都要來在你面前敬拜．因你公義的作為已經顯出來了。 啟示錄 15:4";
+        while (!fits) {
+            var result = await JSRuntime.InvokeAsync<Dictionary<string, double>>("measureText", CurrentBibleVerse, fontSize);
+            var textWidth = result["width"];
+            var textHeight = result["height"];
+            t_textHeight = textHeight;
+            if (textWidth <= areaWidth && textHeight <= areaHeight) {
+                fontSize++;
+            } else {
+                fontSize--;
+                fits = true;
+            }
+
+            if (fontSize < 10) {
+                fontSize = 10;
+                fits = true;
+            }
+        }
+
+        fontSizePx = $"{fontSize}px";
+        StateHasChanged();
+    }
+}

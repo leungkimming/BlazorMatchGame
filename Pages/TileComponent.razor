@@ -1,0 +1,26 @@
+@code {
+    [Parameter] public int Id { get; set; }
+    [Parameter] public string Image { get; set; }
+    [Parameter] public bool IsRevealed { get; set; }
+    [Parameter] public bool IsMatched { get; set; }
+    [Parameter] public EventCallback<int> OnClick { get; set; }
+
+    //private bool isRevealed;
+
+    private async Task Reveal() {
+        if (!IsRevealed && !IsMatched) {
+            await OnClick.InvokeAsync(Id);
+        }
+    }
+}
+
+<div class="tile_container @(IsMatched ? "hidden" : "")" @onclick="Reveal">
+    @if (IsRevealed)
+    {
+        <img src="@Image" alt="@Id,@Image" />
+    }
+    else
+    {
+        <img src="images/Box@(Id+1).png" alt="@Id, Box{@Id+1}" />
+    }
+</div>
